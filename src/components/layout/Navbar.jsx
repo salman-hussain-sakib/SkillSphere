@@ -18,7 +18,6 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 glass-nav">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          {/* Logo */}
           <Link href="/" className="flex items-center space-x-2 group">
             <div className="bg-primary p-2 rounded-lg text-white group-hover:rotate-12 transition-transform">
               <BookOpen size={24} />
@@ -28,7 +27,6 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">Home</Link>
             <Link href="/courses" className="text-sm font-medium hover:text-primary transition-colors">Courses</Link>
@@ -37,7 +35,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {isPending ? (
               <span className="loading loading-spinner loading-sm text-primary"></span>
@@ -68,7 +65,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Toggle */}
           <div className="md:hidden flex items-center">
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 rounded-md hover:bg-base-200">
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -77,7 +73,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

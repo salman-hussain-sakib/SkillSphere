@@ -7,7 +7,6 @@ import { ArrowRight, Play, Star } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative py-20 overflow-hidden bg-base-100">
-      {/* Background Decor */}
       <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
 
@@ -58,7 +57,6 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
             
-            {/* Stats Badge */}
             <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-base-200">
               <div className="flex items-center space-x-4">
                 <div className="flex -space-x-3">

@@ -1,7 +1,7 @@
 "use client";
 
 import { courses } from "@/lib/courses";
-import { Search, Filter, Star, Clock, BookOpen } from "lucide-react";
+import { Search, Star, BookOpen } from "lucide-react";
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -28,7 +28,6 @@ export default function AllCoursesPage() {
           <p className="text-base-content/60">Find the perfect course to advance your career.</p>
         </div>
 
-        {/* Search & Filter Bar */}
         <div className="flex flex-col md:flex-row gap-4 mb-12">
           <div className="relative flex-grow">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-base-content/40" size={20} />
@@ -55,7 +54,6 @@ export default function AllCoursesPage() {
           </div>
         </div>
 
-        {/* Course Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredCourses.length > 0 ? (

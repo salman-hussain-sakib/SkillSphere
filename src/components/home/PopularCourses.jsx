@@ -1,7 +1,7 @@
 "use client";
 
 import { courses } from "@/lib/courses";
-import { Star, Clock, Users, ArrowRight } from "lucide-react";
+import { Star, Clock, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -76,12 +76,6 @@ export default function PopularCourses() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-10 md:hidden text-center">
-          <Link href="/courses" className="btn btn-outline btn-block">
-            View All Courses
-          </Link>
         </div>
       </div>
     </section>

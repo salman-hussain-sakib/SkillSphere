@@ -46,7 +46,7 @@ export default function TrendingCourses() {
                 </p>
                 <div className="flex items-center justify-between">
                   <div className="flex flex-col">
-                    <span className="text-xs text-base-content/50 uppercase font-bold tracking-tighter">Instructor</span>
+                    <span className="text-[10px] text-base-content/40 uppercase font-bold tracking-tighter">Instructor</span>
                     <span className="font-bold">{course.instructor}</span>
                   </div>
                   <Link href={`/courses/${course.id}`} className="btn btn-ghost btn-circle hover:bg-primary hover:text-white transition-all">

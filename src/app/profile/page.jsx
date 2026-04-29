@@ -33,7 +33,6 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-base-100 rounded-3xl shadow-xl overflow-hidden border border-base-200"
         >
-          {/* Header/Cover */}
           <div className="h-48 bg-gradient-to-r from-primary to-secondary relative">
             <div className="absolute -bottom-16 left-8 md:left-12">
               <div className="avatar">
@@ -61,7 +60,6 @@ export default function ProfilePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Stats Card */}
               <div className="md:col-span-1 space-y-6">
                 <div className="bg-base-200/50 p-6 rounded-2xl border border-base-200">
                   <h3 className="font-bold mb-4 flex items-center text-sm uppercase tracking-wider text-base-content/40">
@@ -96,7 +94,6 @@ export default function ProfilePage() {
                 </div>
               </div>
 
-              {/* Main Info */}
               <div className="md:col-span-2 space-y-8">
                 <div>
                   <h2 className="text-xl font-bold mb-6 flex items-center">
@@ -106,7 +103,7 @@ export default function ProfilePage() {
                     {[1, 2].map((i) => (
                       <div key={i} className="flex items-center p-4 bg-base-100 border border-base-200 rounded-2xl hover:bg-base-200 transition-colors">
                         <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mr-4">
-                          <PlayCircle size={24} />
+                          <Clock size={24} />
                         </div>
                         <div className="flex-grow">
                           <p className="font-bold text-sm">Continued learning React Masterclass</p>
@@ -131,5 +128,3 @@ export default function ProfilePage() {
     </div>
   );
 }
-
-const PlayCircle = ({ size }: { size: number }) => <Clock size={size} />; // Placeholder

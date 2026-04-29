@@ -26,7 +26,7 @@ export default function UpdateProfilePage() {
     }
   }, [session, isPending, router]);
 
-  const handleUpdate = async (e: React.FormEvent) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     setLoading(true);
 

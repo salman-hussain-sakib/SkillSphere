@@ -2,7 +2,7 @@
 
 import { Toaster } from "react-hot-toast";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }) {
   return (
     <>
       {children}

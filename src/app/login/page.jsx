@@ -1,39 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { signUp, signIn } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
+import { signIn } from "@/lib/auth-client";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { Mail, Lock, User, Image as ImageIcon, UserPlus, Chrome, ArrowRight, BookOpen } from "lucide-react";
+import { Mail, Lock, LogIn, Chrome, ArrowRight, BookOpen } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
 
-export default function RegisterPage() {
-  const [name, setName] = useState("");
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      await signUp.email({
+      await signIn.email({
         email,
         password,
-        name,
-        image: image || `https://ui-avatars.com/api/?name=${name}&background=6366f1&color=fff`,
-        callbackURL: "/login",
+        callbackURL: callbackUrl,
       }, {
         onSuccess: () => {
-          toast.success("Account created successfully! Please login.");
-          router.push("/login");
+          toast.success("Welcome back to SkillSphere!");
+          router.push(callbackUrl);
         },
         onError: (ctx) => {
-          toast.error(ctx.error.message || "Registration failed. Try again.");
+          toast.error(ctx.error.message || "Invalid credentials. Please try again.");
         }
       });
     } catch (err) {
@@ -52,12 +50,12 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         className="max-w-md w-full space-y-8 bg-base-100 p-10 rounded-3xl shadow-2xl border border-base-200 relative z-10"
       >
         <div className="text-center">
@@ -67,31 +65,14 @@ export default function RegisterPage() {
             </div>
             <span className="text-2xl font-bold text-primary">SkillSphere</span>
           </Link>
-          <h2 className="text-3xl font-extrabold text-base-content">Join SkillSphere</h2>
+          <h2 className="text-3xl font-extrabold text-base-content">Login to your account</h2>
           <p className="mt-2 text-sm text-base-content/60">
-            Start your learning journey today.
+            Welcome back! Please enter your details.
           </p>
         </div>
 
-        <form className="mt-8 space-y-6" onSubmit={handleRegister}>
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="space-y-4">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-bold">Full Name</span>
-              </label>
-              <div className="relative">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-base-content/40" size={18} />
-                <input
-                  type="text"
-                  required
-                  className="input input-bordered w-full pl-12 rounded-xl focus:input-primary"
-                  placeholder="John Doe"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-            </div>
-
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Email Address</span>
@@ -105,22 +86,6 @@ export default function RegisterPage() {
                   placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-bold">Photo URL (Optional)</span>
-              </label>
-              <div className="relative">
-                <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-base-content/40" size={18} />
-                <input
-                  type="url"
-                  className="input input-bordered w-full pl-12 rounded-xl focus:input-primary"
-                  placeholder="https://example.com/photo.jpg"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
                 />
               </div>
             </div>
@@ -143,16 +108,24 @@ export default function RegisterPage() {
             </div>
           </div>
 
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input type="checkbox" className="checkbox checkbox-primary checkbox-xs" id="remember-me" />
+              <label htmlFor="remember-me" className="ml-2 block text-xs text-base-content/60">Remember me</label>
+            </div>
+            <a href="#" className="text-xs font-bold text-primary hover:underline">Forgot password?</a>
+          </div>
+
           <button
             type="submit"
             disabled={loading}
             className="btn btn-primary w-full rounded-xl h-14 text-lg font-bold shadow-lg shadow-primary/20"
           >
-            {loading ? <span className="loading loading-spinner"></span> : <><UserPlus size={20} className="mr-2" /> Register</>}
+            {loading ? <span className="loading loading-spinner"></span> : <><LogIn size={20} className="mr-2" /> Login</>}
           </button>
         </form>
 
-        <div className="divider text-xs text-base-content/40 uppercase font-bold tracking-widest">Or join with</div>
+        <div className="divider text-xs text-base-content/40 uppercase font-bold tracking-widest">Or continue with</div>
 
         <button
           onClick={handleSocialLogin}
@@ -162,9 +135,9 @@ export default function RegisterPage() {
         </button>
 
         <p className="text-center text-sm text-base-content/60 pt-4">
-          Already have an account?{" "}
-          <Link href="/login" className="font-bold text-primary hover:underline inline-flex items-center">
-            Login here <ArrowRight size={14} className="ml-1" />
+          Don't have an account?{" "}
+          <Link href="/register" className="font-bold text-primary hover:underline inline-flex items-center">
+            Register here <ArrowRight size={14} className="ml-1" />
           </Link>
         </p>
       </motion.div>

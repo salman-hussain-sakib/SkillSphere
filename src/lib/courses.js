@@ -1,18 +1,4 @@
-export interface Course {
-  id: number;
-  title: string;
-  instructor: string;
-  duration: string;
-  rating: number;
-  level: string;
-  description: string;
-  image: string;
-  category: string;
-  price: number;
-  curriculum: string[];
-}
-
-export const courses: Course[] = [
+export const courses = [
   {
     id: 1,
     title: "Complete Web Development Bootcamp",
