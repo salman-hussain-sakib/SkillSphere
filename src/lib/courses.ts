@@ -1,0 +1,94 @@
+export interface Course {
+  id: number;
+  title: string;
+  instructor: string;
+  duration: string;
+  rating: number;
+  level: string;
+  description: string;
+  image: string;
+  category: string;
+  price: number;
+  curriculum: string[];
+}
+
+export const courses: Course[] = [
+  {
+    id: 1,
+    title: "Complete Web Development Bootcamp",
+    instructor: "Dr. Angela Yu",
+    duration: "65 hours",
+    rating: 4.8,
+    level: "Beginner",
+    description: "Learn full-stack web development from scratch with HTML, CSS, JavaScript, Node, and React.",
+    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
+    category: "Development",
+    price: 49.99,
+    curriculum: ["Introduction to HTML", "CSS Basics", "JavaScript Fundamentals", "React State Management", "Backend with Node.js"]
+  },
+  {
+    id: 2,
+    title: "Advanced Graphic Design Masterclass",
+    instructor: "John Doe",
+    duration: "20 hours",
+    rating: 4.7,
+    level: "Intermediate",
+    description: "Master Photoshop, Illustrator, and InDesign to create professional designs.",
+    image: "https://images.unsplash.com/photo-1572044162444-ad60f128bde2?auto=format&fit=crop&q=80&w=800",
+    category: "Design",
+    price: 39.99,
+    curriculum: ["Color Theory", "Typography Essentials", "Logo Design Workflow", "Branding Strategies", "Portfolio Building"]
+  },
+  {
+    id: 3,
+    title: "Digital Marketing Strategy 2024",
+    instructor: "Sarah Jenkins",
+    duration: "15 hours",
+    rating: 4.9,
+    level: "Beginner",
+    description: "Learn SEO, Social Media Marketing, and Content Strategy to grow any business.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    category: "Marketing",
+    price: 29.99,
+    curriculum: ["SEO Optimization", "Social Media Advertising", "Email Marketing", "Google Analytics", "Content Planning"]
+  },
+  {
+    id: 4,
+    title: "Python for Data Science & Machine Learning",
+    instructor: "Michael Chen",
+    duration: "45 hours",
+    rating: 4.6,
+    level: "Intermediate",
+    description: "Learn Python programming and its application in data analysis and machine learning.",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800",
+    category: "Development",
+    price: 59.99,
+    curriculum: ["Python Syntax", "NumPy & Pandas", "Data Visualization", "Scikit-Learn Basics", "Neural Networks Intro"]
+  },
+  {
+    id: 5,
+    title: "UX/UI Design: From Wireframe to Prototype",
+    instructor: "Emma Watson",
+    duration: "25 hours",
+    rating: 4.9,
+    level: "Beginner",
+    description: "Design beautiful and functional user interfaces using Figma and Adobe XD.",
+    image: "https://images.unsplash.com/photo-1541462608141-ad603170566d?auto=format&fit=crop&q=80&w=800",
+    category: "Design",
+    price: 44.99,
+    curriculum: ["User Research", "Wireframing Basics", "Prototyping in Figma", "Accessibility in Design", "Testing & Iteration"]
+  },
+  {
+    id: 6,
+    title: "Full-Stack SaaS Development with Next.js",
+    instructor: "Ryan Dahl",
+    duration: "30 hours",
+    rating: 4.9,
+    level: "Advanced",
+    description: "Build a production-ready SaaS application with Next.js 14, Tailwind, and BetterAuth.",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+    category: "Development",
+    price: 69.99,
+    curriculum: ["Next.js App Router", "Server Components", "BetterAuth Integration", "Database Design", "Deployment with Vercel"]
+  }
+];
