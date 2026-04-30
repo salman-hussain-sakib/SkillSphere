@@ -11,13 +11,15 @@ export const auth = betterAuth({
         const client = await clientPromise;
         return client.db("skillsphere");
     }),
-    // This allows login from any device and prevents CSRF blocks on Vercel
+    // This allows login from ANY device and prevents 403 Forbidden on Vercel
     trustedOrigins: [
         process.env.BETTER_AUTH_URL || "",
-        "https://*.vercel.app" 
+        "https://skill-sphere-qbmiqko1q-muhammadsalmansakibs-projects.vercel.app",
+        "https://skill-sphere-salman.vercel.app" 
     ],
     advanced: {
-        crossOrigin: true
+        crossOrigin: true,
+        disableCheckOrigins: true // This will fix the 403 error on multiple devices
     },
     emailAndPassword: {
         enabled: true,
