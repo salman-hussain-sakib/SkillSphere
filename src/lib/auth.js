@@ -1,8 +1,10 @@
 import { betterAuth } from "better-auth";
-import { db } from "./db";
 
 export const auth = betterAuth({
-    database: db,
+    database: {
+        provider: "mongodb",
+        url: process.env.MONGODB_URL
+    },
     emailAndPassword: {
         enabled: true,
         autoSignIn: true
