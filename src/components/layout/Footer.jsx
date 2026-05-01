@@ -62,7 +62,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-base-300 flex flex-col md:flex-row justify-between items-center text-sm text-base-content/60">
           <p>© {new Date().getFullYear()} SkillSphere. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <span>Made with ❤️ for learners</span>
+            <span>Made with ❤️ by Salman Hussain Sakib</span>
           </div>
         </div>
       </div>

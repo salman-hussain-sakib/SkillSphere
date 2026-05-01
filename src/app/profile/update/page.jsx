@@ -106,17 +106,72 @@ export default function UpdateProfilePage() {
               <div className="relative">
                 <ImageIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-base-content/40" size={18} />
                 <input
-                  type="url"
-                  className="input input-bordered w-full pl-12 rounded-xl focus:input-primary h-14"
+                  type="text"
+                  className={`input input-bordered w-full pl-12 rounded-xl focus:input-primary h-14 ${image.includes("ibb.co") && !image.includes("i.ibb.co") ? "input-warning" : ""}`}
                   placeholder="https://example.com/photo.jpg"
                   value={image}
-                  onChange={(e) => setImage(e.target.value)}
+                  onChange={(e) => {
+                    let val = e.target.value.trim();
+                    
+                    // Automatically extract URL from BBCode [img]URL[/img]
+                    const bbMatch = val.match(/\[img\](.*?)\[\/img\]/i);
+                    if (bbMatch && bbMatch[1]) {
+                      val = bbMatch[1];
+                    } 
+                    // Automatically extract URL from HTML src="..."
+                    else {
+                      const htmlMatch = val.match(/src=["'](.*?)["']/i);
+                      if (htmlMatch && htmlMatch[1]) {
+                        val = htmlMatch[1];
+                      }
+                    }
+                    
+                    setImage(val);
+                  }}
                 />
               </div>
-              <label className="label">
-                <span className="label-text-alt text-base-content/40">Provide a direct link to an image (JPEG, PNG, etc.)</span>
+              <label className="label flex-col items-start gap-2">
+                <span className="label-text-alt text-base-content/60">
+                  Provide a <strong>direct link</strong> to an image (ends in .jpg, .png, etc.)
+                </span>
+                {image.includes("ibb.co") && !image.includes("i.ibb.co") && (
+                  <div className="bg-warning/10 text-warning-content p-3 rounded-lg text-xs border border-warning/20 w-full">
+                    <p className="font-bold mb-1">⚠️ ImgBB Viewer Link Detected</p>
+                    <p>You are using a viewer link. It won't show as an image. To fix:</p>
+                    <ul className="list-disc ml-4 mt-1">
+                      <li>Go to your ImgBB link</li>
+                      <li>Click <strong>"Embed codes"</strong></li>
+                      <li>Select <strong>"Direct links"</strong> and copy that URL instead.</li>
+                    </ul>
+                  </div>
+                )}
               </label>
             </div>
+
+            {image && (
+              <div className="mt-4 p-4 bg-base-200/50 rounded-2xl border border-base-200">
+                <p className="text-xs font-bold uppercase tracking-wider text-base-content/40 mb-3">Image Preview</p>
+                <div className="flex justify-center">
+                  <div className="avatar">
+                    <div className="w-24 h-24 rounded-2xl ring ring-primary ring-offset-base-100 ring-offset-2">
+                      <img 
+                        src={image} 
+                        alt="Preview" 
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <div className="w-full h-full bg-base-300 flex items-center justify-center text-base-content/20">
+                        <ImageIcon size={32} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {!image.includes("http") && image.length > 0 && (
+                  <p className="text-[10px] text-center mt-2 text-error">Invalid URL format</p>
+                )}
+              </div>
+            )}
 
             <div className="pt-6">
               <button

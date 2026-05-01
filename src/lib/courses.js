@@ -20,7 +20,7 @@ export const courses = [
     rating: 4.7,
     level: "Intermediate",
     description: "Master Photoshop, Illustrator, and InDesign to create professional designs.",
-    image: "https://images.unsplash.com/photo-1572044162444-ad60f128bde2?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
     category: "Design",
     price: 39.99,
     curriculum: ["Color Theory", "Typography Essentials", "Logo Design Workflow", "Branding Strategies", "Portfolio Building"]
@@ -59,7 +59,7 @@ export const courses = [
     rating: 4.9,
     level: "Beginner",
     description: "Design beautiful and functional user interfaces using Figma and Adobe XD.",
-    image: "https://images.unsplash.com/photo-1541462608141-ad603170566d?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=800",
     category: "Design",
     price: 44.99,
     curriculum: ["User Research", "Wireframing Basics", "Prototyping in Figma", "Accessibility in Design", "Testing & Iteration"]

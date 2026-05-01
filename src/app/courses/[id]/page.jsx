@@ -15,12 +15,12 @@ export default function CourseDetailsPage() {
   
   const course = courses.find(c => c.id === id);
 
-  // Remove auto-redirect for exploring courses
-  // useEffect(() => {
-  //   if (!isPending && !session) {
-  //     router.push(`/login?callbackUrl=/courses/${id}`);
-  //   }
-  // }, [session, isPending, router, id]);
+  // Protect this page - only logged in users can see details
+  useEffect(() => {
+    if (!isPending && !session) {
+      router.push(`/login?callbackUrl=/courses/${id}`);
+    }
+  }, [session, isPending, router, id]);
 
   if (isPending) {
     return (

@@ -1,10 +1,13 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
+import { Resend } from "resend";
+import { emailOTP } from "better-auth/plugins";
 
 const mongoUrl = process.env.MONGODB_URL || "mongodb://placeholder";
 const client = new MongoClient(mongoUrl);
 const db = client.db("skillsphere");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const auth = betterAuth({
     database: mongodbAdapter(db),
@@ -13,7 +16,7 @@ export const auth = betterAuth({
     // This allows login from ANY device and prevents 403 Forbidden on Vercel
     trustedOrigins: [
         process.env.BETTER_AUTH_URL || "",
-        "https://skill-sphere-qbmiqko1q-muhammadsalmansakibs-projects.vercel.app",
+        "https://skill-sphere-won8.vercel.app",
         "https://skill-sphere-salman.vercel.app" 
     ],
     advanced: {
@@ -28,14 +31,6 @@ export const auth = betterAuth({
         google: {
             clientId: process.env.GOOGLE_CLIENT_ID || "placeholder",
             clientSecret: process.env.GOOGLE_CLIENT_SECRET || "placeholder",
-        }
-    },
-    user: {
-        additionalFields: {
-            image: {
-                type: "string",
-                required: false,
-            },
         }
     }
 });

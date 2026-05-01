@@ -6,7 +6,7 @@ import { ArrowRight, Play, Star } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden bg-[#F0F7F7]">
+    <section className="relative py-20 lg:py-32 overflow-hidden bg-base-200/50">
       {/* Background Abstract Shapes */}
       <div className="absolute top-20 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-50" />
       <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl opacity-50" />
@@ -23,7 +23,7 @@ export default function Hero() {
               <Star size={14} fill="currentColor" className="text-yellow-600" />
               <span className="text-xs font-bold uppercase tracking-widest">Special offer for first time customers</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8 text-[#1A2238]">
+            <h1 className="text-5xl md:text-7xl font-extrabold leading-[1.1] mb-8 text-base-content">
               Learn on your <br />
               schedule from <br />
               <span className="text-primary inline-flex items-center">
@@ -42,17 +42,7 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Partner Logos */}
-            <div className="mt-20 pt-10 border-t border-base-300/50">
-              <p className="text-[10px] text-base-content/40 font-bold uppercase tracking-[0.2em] mb-6">Over 2,000+ trusted partner around the world</p>
-              <div className="flex flex-wrap gap-8 opacity-30 grayscale items-center">
-                <span className="text-xl font-bold tracking-tighter">smartoro</span>
-                <span className="text-xl font-bold tracking-tighter">adelfox</span>
-                <span className="text-xl font-bold tracking-tighter">cesis</span>
-                <span className="text-xl font-bold tracking-tighter">moyoshiro</span>
-                <span className="text-xl font-bold tracking-tighter">thefox</span>
-              </div>
-            </div>
+
           </motion.div>
 
           <motion.div
@@ -64,7 +54,7 @@ export default function Hero() {
           >
             {/* Main Image with floating elements */}
             <div className="relative z-20">
-              <div className="relative rounded-[60px] overflow-hidden rotate-[-2deg] border-[12px] border-white shadow-2xl">
+              <div className="relative rounded-[60px] overflow-hidden rotate-[-2deg] border-[12px] border-base-100 shadow-2xl">
                 <img
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
                   alt="Student with laptop"
@@ -80,13 +70,13 @@ export default function Hero() {
             </div>
 
             {/* Floating UI Card */}
-            <div className="absolute top-10 -left-16 bg-white p-6 rounded-3xl shadow-2xl border border-base-100 z-30 rotate-[-5deg]">
+            <div className="absolute top-10 -left-16 bg-base-100 p-6 rounded-3xl shadow-2xl border border-base-200 z-30 rotate-[-5deg]">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
                   <Play size={20} fill="currentColor" />
                 </div>
                 <div>
-                  <p className="text-sm font-bold text-[#1A2238]">Active Lessons</p>
+                  <p className="text-sm font-bold text-base-content">Active Lessons</p>
                   <p className="text-xs text-base-content/60">12 ongoing courses</p>
                 </div>
               </div>

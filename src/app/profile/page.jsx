@@ -33,13 +33,21 @@ export default function ProfilePage() {
           animate={{ opacity: 1, y: 0 }}
           className="bg-base-100 rounded-3xl shadow-xl overflow-hidden border border-base-200"
         >
-          <div className="h-48 bg-gradient-to-r from-primary to-secondary relative">
-            <div className="absolute -bottom-16 left-8 md:left-12">
+          <div className="h-48 md:h-56 relative w-full bg-gradient-to-tr from-primary/10 via-base-200 to-secondary/10">
+            {/* Subtle CSS-only dot pattern for a modern look */}
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)", backgroundSize: "24px 24px" }}></div>
+            {/* Smooth fade into the card body */}
+            <div className="absolute inset-0 bg-gradient-to-t from-base-100 to-transparent opacity-60"></div>
+            
+            <div className="absolute -bottom-16 left-8 md:left-12 z-10">
               <div className="avatar">
-                <div className="w-32 md:w-40 rounded-3xl ring-8 ring-base-100 shadow-2xl">
+                <div className="w-32 md:w-40 rounded-3xl ring-8 ring-base-100 shadow-2xl bg-base-100">
                   <img
                     src={session.user.image || `https://ui-avatars.com/api/?name=${session.user.name}&background=6366f1&color=fff`}
                     alt={session.user.name}
+                    onError={(e) => {
+                      e.target.src = `https://ui-avatars.com/api/?name=${session.user.name}&background=6366f1&color=fff`;
+                    }}
                   />
                 </div>
               </div>

@@ -2,7 +2,7 @@
 
 import { courses } from "@/lib/courses";
 import { Search, Star, BookOpen } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,13 +12,12 @@ export default function AllCoursesPage() {
 
   const categories = ["All", ...new Set(courses.map(c => c.category))];
 
-  const filteredCourses = useMemo(() => {
-    return courses.filter(course => {
-      const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesCategory = selectedCategory === "All" || course.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchQuery, selectedCategory]);
+  // Beginner-friendly way to filter courses without useMemo
+  const filteredCourses = courses.filter(course => {
+    const matchesSearch = course.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || course.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
     <div className="min-h-screen bg-base-100 py-20">

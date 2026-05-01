@@ -64,6 +64,9 @@ export default function Navbar() {
                     <img
                       alt="User Avatar"
                       src={session.user.image || `https://ui-avatars.com/api/?name=${session.user.name}&background=6366f1&color=fff`}
+                      onError={(e) => {
+                        e.target.src = `https://ui-avatars.com/api/?name=${session.user.name}&background=6366f1&color=fff`;
+                      }}
                     />
                   </div>
                 </div>
